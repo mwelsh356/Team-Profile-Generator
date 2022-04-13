@@ -12,7 +12,7 @@ const teamArray = [];
 
 // Function to add team member
 const addMember = () => {
-    inquirer.prompt ([
+    inquirer.prompt([
         {
             type: 'input',
             name: 'name',
@@ -35,30 +35,54 @@ const addMember = () => {
             message: "Please enter the team member's email"
         },
     ])
-    // Function to differentiate the last prompt based on role
-    .then(function({name, role, id, email}) {
-        let roleinfo = "";
-        if (role === "Engineer") {
-            roleinfo = "Github username";
-        }
-        else if (role === "Intern") {
-            roleInfo = "school name";
-        }
-        else {
-            roleinfo = "work phone number"
-        }
-        inquirer.prompt ([
-         {
-            type: 'input',
-            name: 'roleinfo',
-            message: `Please enter the team member's ${roleinfo}`
-        },
-        {
-            type: 'list',
-            name: 'addTeam',
-            message: "Would you like to add more members?",
-            choices: ['Yes', 'No']
-        }
-        ])
-    })
+        // Function to differentiate the last prompt based on role
+        .then(function ({ name, role, id, email }) {
+            let roleinfo = "";
+            if (role === "Engineer") {
+                roleinfo = "Github username";
+            }
+            else if (role === "Intern") {
+                roleInfo = "school name";
+            }
+            else {
+                roleinfo = "work phone number"
+            }
+            inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'roleinfo',
+                    message: `Please enter the team member's ${roleinfo}`
+                },
+                {
+                    type: 'list',
+                    name: 'addTeam',
+                    message: "Would you like to add more members?",
+                    choices: ['Yes', 'No']
+                }
+            ])
+            // Function to determine the prompts for the new member
+            .then(function({roleInfo, addTeam}) {
+                let newMember;
+                if (role === "Manager") {
+                    newMember = new Manager (name, id, email, roleInfo);
+                }
+                else if (role === "Engineer") {
+                    newMember = new Engineer (name, id, email, roleInfo);
+                }
+                else if (role === "Intern") {
+                    newMember = new Intern (name, id, email, roleInfo);
+                }
+                employees.push(newMember);
+                addhtml(newMember)
+                .then(function(){
+                    if (addTeam === 'Yes') { 
+                        addMember();
+                    }
+                    else { 
+                        finishHtml();
+                    }
+                })
+            })
+        })
+        
 }
