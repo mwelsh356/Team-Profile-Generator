@@ -114,6 +114,28 @@ function generateHtml() {
 
 // Function to add to html depending on role selected
 function addHtml(member) {
-    return new Promise(function(resolve, reject) 
-    )
+    return new Promise(function(resolve, reject) {
+        const name = member.getName();
+        const role = member.getRole();
+        const id = member.getId();
+        const email = member.getEmail();
+        let data = '';
+        if (role === "Engineer") {
+            const gitHub = member.getGithub();
+            data = `<div class= "col-6">
+            <div class= "card mx-auto mb-3" style= "width: 18rem">
+            <h5 class= "card-header">${name}<br /><br />Engineer</h5>
+            <ul class= "list-group list-group-flush">
+                <li class= "list-group-item">ID: ${id}</li>
+                <li class= "list-group-item">Email Address: ${email}</li>
+                <li class= "list-group-item">GitHub: ${gitHub}</li>
+            </ul>
+            <div>
+        </div>
+                `
+        }
+        else if (role === "Intern") {
+            const school = member.getSchool();
+        }
+    })
 }
