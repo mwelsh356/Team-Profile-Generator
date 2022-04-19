@@ -11,7 +11,12 @@ const Intern = require('./lib/Intern');
 const teamArray = [];
 
 // Function to add team member
-const addMember = () => {
+function initApp() {
+    generateHtml();
+    addMember();
+}
+
+function addMember() {
     inquirer.prompt([
         {
             type: 'input',
@@ -104,7 +109,7 @@ function generateHtml() {
         </nav>
         <div class= "container">
             <div class="row">`;
-    fs.writeFile("./output/team.html", html, function(err) {
+    fs.writeFile("./dist/index.html", html, function(err) {
         if (err) {
             console.log(err);
         }
@@ -160,7 +165,7 @@ function addHtml(member) {
         </div>`;
         }
         console.log("adding your team member now");
-        fs.appendFile("./output/team.html", data, function (err) {
+        fs.appendFile("./dist/index.html", data, function (err) {
             if (err) {
                 return reject(err);
             };
@@ -171,5 +176,16 @@ function addHtml(member) {
 
 //Function to finish writing HTML
 function finishHtml() {
+    const html = ` </div> 
+    </div>
+    
+</body>
+</html>`;
 
+    fs.appendFile("./output/team.html", html, function (err) {
+        if (err) {
+            console.log(err);
+        };
+    });
 }
+initApp();
