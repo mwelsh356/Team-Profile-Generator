@@ -159,6 +159,17 @@ function addHtml(member) {
             <div>
         </div>`;
         }
-        console.log
-    })
+        console.log("adding your team member now");
+        fs.appendFile("./output/team.html", data, function (err) {
+            if (err) {
+                return reject(err);
+            };
+            return resolve();
+        });
+    });
+}
+
+//Function to finish writing HTML
+function finishHtml() {
+
 }
