@@ -8,7 +8,7 @@ const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 
 // Array to store team data
-const teamArray = [];
+const employees = [];
 
 // Function to add team member
 function initApp() {
@@ -78,7 +78,7 @@ function addMember() {
                     newMember = new Intern (name, id, email, roleInfo);
                 }
                 employees.push(newMember);
-                addhtml(newMember)
+                addHtml(newMember)
                 .then(function(){
                     if (addTeam === 'Yes') { 
                         addMember();
