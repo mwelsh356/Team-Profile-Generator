@@ -8,21 +8,21 @@ test('gets employee name', () => {
     expect(employee.getName()).toEqual(expect.any(String));
 });
 
-// Tests to see if it can get id from getID
+// Tests to see if it can get id
 test('gets employee ID', () => {
     const employee = new Employee('Mike', 90, 'michaelwelsh356@gmail.com');
 
     expect(employee.getId()).toEqual(expect.any(Number));
 });
 
-// Tests to see if it can get email from getEmail
+// Tests to see if it can get email
 test('gets employee email', () => {
     const employee = new Employee('Mike', 90, 'michaelwelsh356@gmail.com');
 
     expect(employee.getEmail()).toEqual(expect.stringContaining(employee.email.toString()));
 });
 
-// Tests to see if it can get role from getRole
+// Tests to see if it can get role
 test('gets employee role', () => {
     const employee = new Employee('Mike', 90, 'michaelwelsh356@gmail.com');
 
