@@ -1,4 +1,4 @@
-// Using engineer constructor 
+// Engineer constructor 
 const Engineer = rewuire('../lib/Engineer');
 
 // Creating engineer object

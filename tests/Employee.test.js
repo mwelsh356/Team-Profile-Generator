@@ -1,4 +1,4 @@
-// Using employee constructor
+// Employee constructor
 const Employee = require('../lib/Employee');
 
 // Tests if it can get name from getName
