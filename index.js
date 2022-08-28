@@ -159,12 +159,12 @@ function addHtml(member) {
             <ul class= "list-group list-group-flush">
                 <li class= "list-group-item">ID: ${id}</li>
                 <li class= "list-group-item">Email Address: ${email}</li>
-                <li class= "list-group-item">School: ${workPhone}</li>
+                <li class= "list-group-item">Phone: ${workPhone}</li>
             </ul>
             <div>
         </div>`;
         }
-        console.log("adding your team member now");
+        console.log("Adding your team member now");
         fs.appendFile("./dist/index.html", data, function (err) {
             if (err) {
                 return reject(err);
